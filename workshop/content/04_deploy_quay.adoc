@@ -64,7 +64,7 @@ oc create -n quay-enterprise -f quayregistry.yaml
 [cols="1a",grid=none,width=80%]
 |===
 ^| image::images/componentnotready.png[link=images/componentnotready.png,window=_blank]
-^| Figure 4.1 - The Red Hat Quay Operator
+^| Figure 4.4 - Components not yet ready
 ^| [small]#Click on image to view large size#
 |===
 
@@ -73,7 +73,7 @@ oc create -n quay-enterprise -f quayregistry.yaml
 [cols="1a",grid=none,width=80%]
 |===
 ^| image::images/componentsready.png[link=images/componentsready.png,window=_blank]
-^| Figure 4.1 - The Red Hat Quay Operator
+^| Figure 4.5 - Deployment is Available & Ready
 ^| [small]#Click on image to view large size#
 |===
 . You may also view the pods via the cli

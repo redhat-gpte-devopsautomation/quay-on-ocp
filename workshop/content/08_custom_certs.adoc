@@ -130,4 +130,4 @@ $ openssl x509 -req -in ssl.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial
 
 . Click `Validate Configuration Changes` and `Reconfigure quay`
 
-. In your OpenShift Console Wait for the example-registry Conditions to become Available--> True again
+. In your OpenShift Console Wait for the example-registry Conditions to become Available -> True again

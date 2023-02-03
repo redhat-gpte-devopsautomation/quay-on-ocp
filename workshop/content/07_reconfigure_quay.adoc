@@ -114,7 +114,7 @@ quayadmin
 |===
 
 
-. Navigate to Networking> Routes and see that the route has also been updated by the Operator
+. Navigate to *Networking > Routes* and see that the route has also been updated by the Operator
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -124,4 +124,4 @@ quayadmin
 |===
 
 
-. We are using the config editor as a graphical interface to generate a config which is actually the config bundle secret. So if you change anything directly in the config bundle secret and save, an updated quay deployment will rollout
+. We are using the config editor as a graphical interface to generate a config which is actually the config bundle secret. So if you change anything directly in the config bundle secret and save, an updated quay deployment will rollout.
