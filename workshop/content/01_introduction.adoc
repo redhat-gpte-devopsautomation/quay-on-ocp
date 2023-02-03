@@ -2,14 +2,14 @@
 == Introduction
 
 Red Hat Quay is an enterprise-quality registry for building, securing and serving container images. 
-It provides secure storage, distribution, and governance of containers and cloud-native artifacts on any infrastructure.
+It provides secure storage, distribution, governance of containers and cloud-native artifacts on any infrastructure.
 
 Manual deployments of Red Hat Quay involves multiple sub-components and the overhead of managing those components. Red Hat Quay is best deployed on Red Hat OpenShift using the Operators which simplifies the deployment and manages all the components. It also gives you the option of keeping any of the components self-managed.
 
 
 == Overview
 
-In this hands on lab you will:
+In this hands-on lab you will:
 
 * Deploy Red Hat Quay
 ** Install the OpenShift Data Foundation operator
@@ -24,6 +24,6 @@ In this hands on lab you will:
 ** Enable proxy cache
 ** Enable storage quota and consumption tracking
 * Reconfigure Clair
-** Disable the python updater
+** Disable the Python updater
 * Increase the Postgres database size of Quay and Clair
 * Increase the size NooBaa’s S3 endpoint

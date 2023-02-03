@@ -1,6 +1,7 @@
 == Create and use custom certificate
+Before using your own certificate, you need to tell the operator that it will be managed by you.
 
-. Change In your Quay Registry yaml, set `kind: tls` to `managed: false:`
+. In your Quay Registry yaml, set `kind: tls` to `managed: false:`
 +
 [source,sh]
 ----
@@ -18,10 +19,13 @@
 . Click Save
 
 . In the Events tab you can see this message now
-
++
+[source,sh]
+----
 required component `tls` marked as unmanaged, but `configBundleSecret` is missing necessary fields
+----
 
-. Create a openssl.cnf file with below contents, make sure to update the DNS.1 field with your Quay registry hostname
+. Create an openssl.cnf file with below contents, make sure to update the DNS.1 field with your Quay registry hostname
 +
 [source,sh]
 ----
@@ -119,15 +123,15 @@ $ openssl x509 -req -in ssl.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial
 ----
 
 
-. Upload the cert and key file in the Quay config editor. Click Edit Fields to may the fields editable and then Click on Choose File to upload the cert and key files from your local machine.
+. Upload the cert and key file in the Quay config editor. Click Edit Fields to make the fields editable and then click on `Choose File` button to upload the cert and key files from your local machine
 +
 [cols="1a",grid=none,width=80%]
 |===
 ^| image::images/tlsupload.png[link=images/tlsupload.png,window=_blank]
-^| Figure 8.1 - Upload custom certificates in the config editor
+^| Figure 8.2 - Upload custom certificates in the config editor
 ^| [small]#Click on image to view large size#
 |===
 
 . Click `Validate Configuration Changes` and `Reconfigure quay`
 
-. In your OpenShift Console Wait for the example-registry Conditions to become Available -> True again
+. In your OpenShift Console wait for the `example-registry` Conditions to become *Available -> True* again

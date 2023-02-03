@@ -1,15 +1,15 @@
 == Enable new UI
 
-. Locate the config bundle secret and click on it.
+. Locate the *Config Bundle Secret* and click on it
 +
 [cols="1a",grid=none,width=80%]
 |===
 ^| image::images/configbundlesecret.png[link=images/configbundlesecret.png,window=_blank]
-^| Figure 9.1 - Locate the config bundle secret and click on it
+^| Figure 9.1 - Config bundle secret location
 ^| [small]#Click on image to view large size#
 |===
 
-. Click on Edit secret
+. Click on *Edit secret* from the Actions dropdown
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -17,20 +17,20 @@
 ^| Figure 9.2 - Button to edit the config bundle secret
 ^| [small]#Click on image to view large size#
 |===
-. Edit the config bundle secret to include the flag FEATURE_UI_V2: true
+. Edit the *config bundle secret* to include the flag *FEATURE_UI_V2: true*
 +
 [cols="1a",grid=none,width=80%]
 |===
 ^| image::images/newui3.png[link=images/newui3.png,window=_blank]
-^| Figure 9.3 - 
+^| Figure 9.3 - Inclusion of the flag FEATURE_UI_V2: true
 ^| [small]#Click on image to view large size#
 |===
 
 . Scroll down and click `Save`
 
-. Wait for sometime for the configuration to be applied to the application.
+. Wait for sometime so that the configuration gets applied to the application
 
-. Login to the UI, you’ll see a button to toggle between current and new UI
+. Login to the UI where you’ll see a button to toggle between current and the new UI
 
 +
 [cols="1a",grid=none,width=80%]

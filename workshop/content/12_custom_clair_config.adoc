@@ -9,13 +9,13 @@ Oracle Oval database +
 RHEL Oval database +
 SUSE Oval database +
 Ubuntu Oval database +
-Pyup.io (python) database
+Pyup.io (Python) database
 
 === Disable the python updater
 
-The python updater is responsible for continuously downloading the vulnerability database for python. In this exercise you will disable the python updater for Clair, although Clair will still remain `managed` by the Quay operator.
+The Python updater is responsible for continuously downloading the vulnerability database for Python. In this exercise you will disable the python updater for Clair, although Clair will still remain `managed` by the Quay operator.
 
-So, as per the upstream clair documentation, the list of matcher names can be found here https://quay.github.io/clair/reference/config.html#matchersnames
+So, as per the upstream clair documentation, the list of matcher names can be found here: https://quay.github.io/clair/reference/config.html#matchersnames
 
 alpine +
 aws +
@@ -49,7 +49,7 @@ updaters:
 
 . Now edit your config bundle secret and add a new key value pair
 
-. The key would be `clair-config.yaml` and the value will include the yaml you copied.
+. The key would be `clair-config.yaml` and the value will include the yaml you copied
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -58,9 +58,9 @@ updaters:
 ^| [small]#Click on image to view large size#
 |===
 
-. Click Save
+. Click *Save*
 
-. Now this user provided configuration will be merged with the configuration which is provided by the Operator and new clair-app deployments will be rolled out with the updated configuration.
+. Now this user provided configuration will be merged with the configuration which is provided by the Operator and new clair-app deployments will be rolled out with the updated configuration
 
 . You can see the updated configuration by navigating to *Workloads>Deployments>example-registry-clair-app*
 +
@@ -71,9 +71,9 @@ updaters:
 ^| [small]#Click on image to view large size#
 |===
 
-. Scroll down to the Volumes section and click on the secret it’s using (refer screenshot). 
+. Scroll down to the Volumes section and click on the secret it is using (refer screenshot) 
 Example name is 
-example-registry-clair-config-secret-XXXXXX
+`example-registry-clair-config-secret-XXXXXX`
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -95,4 +95,4 @@ example-registry-clair-config-secret-XXXXXX
 Notice that your provided settings has been appended to the existing configuration.
 
 
-Thus, the python updaters for the vulnerability database of clair have been disabled.
+Thus, the Python updaters for the vulnerability database of Clair have been disabled.

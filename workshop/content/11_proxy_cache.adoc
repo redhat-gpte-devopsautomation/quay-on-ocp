@@ -4,9 +4,9 @@ Registries like Docker or Google Cloud Platform have rate limitations and thrott
 
 Red Hat Quay can act as a proxy cache and has the following benefits:
 
-- Bypass pull-rate limitations from upstream registries. 
-- Accelerate pull performance, because images are pulled from the cache rather than upstream dependencies. 
-- Cached images are only updated when the upstream image digest differs from the cached image, reducing rate limitations and potential throttling.
+- Bypass pull-rate limitations from upstream registries 
+- Accelerate pull performance, because images are pulled from the cache rather than upstream dependencies
+- Cached images are only updated when the upstream image digest differs from the cached image, thereby reducing rate limitations and potential throttling
 
 . Enable proxy caching by setting the below flag in your config bundle secret
 +
@@ -22,10 +22,10 @@ FEATURE_PROXY_CACHE: true
 ^| [small]#Click on image to view large size#
 |===
 
-. Scroll down and click *Save*. It will take a minute for the changes to take effect.
+. Scroll down and click *Save*. It will take a minute for the changes to take effect
 
 . Create a new organisation named `proxytest`
-.. Enter the Remote registry value: `quay.io``
+.. Enter the Remote registry value: `quay.io`
 .. Enter the corresponding Remote registry username and password
 .. Expiration is an optional field
 .. Click *Save*
@@ -39,7 +39,7 @@ Once you click Save, you will see a message which says `Successfully created pro
 ^| [small]#Click on image to view large size#
 |===
 
-. Now pull a image
+. Now pull an image
 +
 [source,sh]
 ----
@@ -47,9 +47,9 @@ podman pull --tls-verify=false quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc
 podman pull --tls-verify=false quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com/proxytest/projectquay/quay:3.6.2
 ----
 
-. These images are pulled from quay.io but is being cached in the proxytest organization of your quay registry.
+. These images are pulled from `quay.io` but is being cached in the proxytest organization of your quay registry
 
-. Set a Storage quota of *1 GB* on this *proxytest* organization by logging into the superuser admin panel, and change the quota for the proxytest organization. This process has been described in detail in the previous exercise.
+. Set a Storage quota of *1 GB* on this *proxytest* organization by logging into the superuser admin panel and change the quota for the proxytest organization. This process has been described in detail in the previous exercise
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -58,7 +58,7 @@ podman pull --tls-verify=false quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc
 ^| [small]#Click on image to view large size#
 |===
 
-. Move to the repository and check the tags, you should see both the images available.
+. Move to the repository and check the tags, you should find both the images available
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -68,16 +68,16 @@ podman pull --tls-verify=false quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc
 |===
 
 === Auto prune feature
-. Pull the last image that will result in your repository exceeding the the allotted quota, for example:
+. Pull the last image that will result in your repository exceeding the allotted quota, for example:
 +
 [source,sh]
 ----
 podman pull --tls-verify=false quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com/proxytest/projectquay/quay:3.8.1
 ----
 
-. Refresh the Tags page of your Red Hat Quay registry. 
-.. The first image that you pushed, for example, quay:3.7.9 should have been auto-pruned. 
-.. The Tags page should now show quay:3.6.2 and quay:3.8.1.
+. Refresh the Tags page of your Red Hat Quay registry
+.. The first image that you pushed, for example, `quay:3.7.9` should have been auto-pruned 
+.. The Tags page should now show `quay:3.6.2` and `quay:3.8.1`
 +
 [cols="1a",grid=none,width=80%]
 |===

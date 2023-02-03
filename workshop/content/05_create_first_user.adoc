@@ -9,7 +9,7 @@
 ^| [small]#Click on image to view large size#
 |===
 
-. For Red Hat Quay, the first user has to be created manually. Click *Create Account* in the Quay registry UI to create an user
+. For Red Hat Quay, the first user has to be created manually. Click *Create Account* in the Quay registry UI to create a user
 +
 [cols="1a",grid=none,width=80%]
 |===

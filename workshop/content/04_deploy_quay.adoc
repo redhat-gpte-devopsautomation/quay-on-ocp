@@ -1,6 +1,6 @@
 == Deploy Quay using the Red Hat Quay Operator
 
-. In the OpenShift console, Select *Operators → OperatorHub*, then select the *Red Hat Quay* Operator. If there is more than one, be sure to use the Red Hat certified Operator and not the community version.
+. In the OpenShift console, select *Operators → OperatorHub*, then select the *Red Hat Quay* Operator. If there is more than one, be sure to use the Red Hat certified Operator and not the community version.
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -18,7 +18,7 @@
 |===
 . After a short time, you will see the Operator installed successfully. Click *View Operator*
 
-. You can now create the QuayRegistry instance from the cli or via the Openshift Console. Steps for creating via cli are shown below.
+. You can now create the QuayRegistry instance from the cli or via the Openshift Console. Steps for creating via cli are shown below
 
 === Deploy the QuayRegistry instance
 
@@ -48,7 +48,7 @@ oc create -n quay-enterprise -f quayregistry.yaml
 
 === Verify successful deployment
 
-. Navigate to *Operators → Installed Operators*, then select the *Red Hat Quay* Operator to navigate inside the Operator detail view.
+. Navigate to *Operators → Installed Operators*, then select the *Red Hat Quay* Operator to navigate inside the Operator detail view
 
 . Select the `Quay Registry` tab and click on the `example-registry` resource to see its detailed view
 +
@@ -58,7 +58,7 @@ oc create -n quay-enterprise -f quayregistry.yaml
 ^| Figure 4.3 - QuayRegistry Instance
 ^| [small]#Click on image to view large size#
 |===
-. Scroll down to the Conditions section to see the status of the components meeting the condition requirements.
+. Scroll down to the Conditions section to see the status of the components meeting the condition requirements
 . In the beginning components are not ready
 +
 [cols="1a",grid=none,width=80%]
@@ -82,10 +82,10 @@ oc create -n quay-enterprise -f quayregistry.yaml
 ----
 oc get pods -n quay-enterprise
 ----
-. Alternatively, you can wait until the status.registryEndpoint is populated.
+. Alternatively, you can wait until the status.registryEndpoint is populated
 +
 [source,sh]
 ----
 oc get quayregistry -n quay-enterprise example-registry -o jsonpath="{.status.registryEndpoint}" -w
 ----
-. You can open the registry endpoint link to land on the home page of the Red Hat Quay application.
+. You can open the registry endpoint link to land on the home page of the Red Hat Quay application

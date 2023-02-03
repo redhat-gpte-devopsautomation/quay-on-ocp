@@ -1,6 +1,6 @@
 == Create NooBaa object storage 
 
-. Connect to your OpenShift cluster via cli. You will get the OpenShift API for command line 'oc' client in the same email where you received the credentials
+. Connect to your OpenShift cluster via cli. You will get the OpenShift API for command line `oc` client in the same email where you received the credentials
 +
 [source,sh]
 ----

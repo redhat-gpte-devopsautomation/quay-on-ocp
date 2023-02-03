@@ -1,6 +1,6 @@
 == Access the config editor
 
-. Before logging in to the config editor grab the username and password from the *Config Editor Credentials Secret*. Locate it as shown in the screenshot and click on it.
+. Before logging in to the config editor grab the username and password from the *Config Editor Credentials Secret*. Locate it as shown in the screenshot and click on it
 +
 [cols="1a",grid=none,width=80%]
 |===
