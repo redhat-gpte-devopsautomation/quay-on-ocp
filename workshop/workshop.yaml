@@ -1,16 +1,19 @@
 ---
-name: Deploy Red Hat Quay on RHEL
+name: Deploy Red Hat Quay on OpenShift using Operators
 modules:
   activate:
     -  01_introduction
-    -  02_order_lab    
-    -  03_rhel_prerequisites
-    -  04_configure_database
-    -  05_configure_redis
-    -  06_quay_config_mode
-    -  07_deploy_quay
-    -  08_deploy_quay_ssl
-    -  09_superuser
-    -  10_repo_mirroring
-    -  11_deploy_clair
+    -  02_install_odf   
+    -  03_create_noobaa
+    -  04_deploy_quay
+    -  05_create_first_user
+    -  06_access_config_editor
+    -  07_reconfigure_quay
+    -  08_custom_certs
+    -  09_new_ui_preview
+    -  10_quota_management
+    -  11_proxy_cache
+    -  12_custom_clair_config
+    -  13_increase_db_size
+    -  14_increase_nooba_size
     
