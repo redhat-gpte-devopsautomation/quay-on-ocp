@@ -1,0 +1,60 @@
+== Increase the Postgres database size 
+
+You can easily increase the PVC size for the Postgres database of Quay and Clair. This is called volume size override.
+As the storage is managed by the operator, you need edit the custom resource.
+
+. Click on *Installed Operators> Red Hat Quay > Click on QuayRegistry tab > select example-registry*
+. Click on Actions dropdown and select `Edit QuayRegistry`
+. Add the overrides for the volume size for both the clair and quay databases
++
+[source,sh]
+----
+     overrides:
+        volumeSize: 70Gi
+----
+
+. Edited yaml example
++
+[source,sh]
+----
+spec:
+ components:
+   - kind: quay
+     managed: true
+   - kind: postgres
+     managed: true
+     overrides:
+       volumeSize: 70Gi
+   - kind: clair
+     managed: true
+     overrides:
+       volumeSize: 70Gi
+----
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expanddb1.png[link=images/expanddb1.png,window=_blank]
+^| Figure 13.1 - Use volume size override to increase db size
+^| [small]#Click on image to view large size#
+|===
+
+. Click Save
+. The registry is now updated
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expanddb2.png[link=images/expanddb2.png,window=_blank]
+^| Figure 13.2 - Notification of registry update after clicking Save
+^| [small]#Click on image to view large size#
+|===
+
+. Notice that the PersistentVolumeClaims sizes have increased.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expanddb3.png[link=images/expanddb3.png,window=_blank]
+^| Figure 13.3 - Increased pvc size
+^| [small]#Click on image to view large size#
+|===
+
+Thus, the database sizes have been increased easily.

@@ -1,0 +1,133 @@
+== Create and use custom certificate
+
+. Change In your Quay Registry yaml, set `kind: tls` to `managed: false:`
++
+[source,sh]
+----
+ - kind: tls
+    managed: false
+----
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/tlsfalse.png[link=images/tlsfalse.png,window=_blank]
+^| Figure 8.1 - Change TLS to managed
+^| [small]#Click on image to view large size#
+|===
+
+. Click Save
+
+. In the Events tab you can see this message now
+
+required component `tls` marked as unmanaged, but `configBundleSecret` is missing necessary fields
+
+. Create a openssl.cnf file with below contents, make sure to update the DNS.1 field with your Quay registry hostname
++
+[source,sh]
+----
+[req]
+req_extensions = v3_req
+distinguished_name = req_distinguished_name
+[req_distinguished_name]
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com
+----
++
+NOTE: make sure to change the DNS.1 field appropriately as per your lab environment
+
+. Create a Certificate Authority
++
+*Do the below on your laptop*
+
+
+.. Generate the root CA key:
++
+[source,sh]
+----
+$ openssl genrsa -out rootCA.key 2048
+----
+.. Generate the root CA cert:
++
+[source,sh]
+----
+$ openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.pem
+----
+Enter the information that will be incorporated into your certificate request, including the server hostname, for example:
++
+[source,sh]
+----
+Country Name (2 letter code) [XX]:IN
+State or Province Name (full name) []:KARNATAKA
+Locality Name (eg, city) [Default City]:BANGALORE
+Organization Name (eg, company) [Default Company Ltd]:QUAY
+Organizational Unit Name (eg, section) []:TRAINING
+Common Name (eg, your name or your server's hostname) []:quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com
+Email Address []:
+----
++
+This creates the following files
++
+[source,sh]
+----
+[nroy@nealwork quay]$ ls
+rootCA.key  rootCA.pem
+----
+
+
+. Sign a certificate
++
+.. Generate the server key:
++
+[source,sh]
+----
+$ openssl genrsa -out ssl.key 2048
+----
+.. Generate a signing request:
++
+[source,sh]
+----
+$ openssl req -new -key ssl.key -out ssl.csr
+----
+Enter the information that will be incorporated into your certificate request, including the server hostname, for example:
++
+[source,sh]
+----
+Country Name (2 letter code) [XX]:IN
+State or Province Name (full name) []:KARNATAKA
+Locality Name (eg, city) [Default City]:BANGALORE
+Organization Name (eg, company) [Default Company Ltd]:QUAY
+Organizational Unit Name (eg, section) []:TRAINING
+Common Name (eg, your name or your server's hostname) []:quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com
+Email Address []:
+
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+----
+
+. Use the configuration file to generate the certificate ssl.cert:
++
+[source,sh]
+----
+$ openssl x509 -req -in ssl.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out ssl.cert -days 356 -extensions v3_req -extfile openssl.cnf
+----
+
+
+. Upload the cert and key file in the Quay config editor. Click Edit Fields to may the fields editable and then Click on Choose File to upload the cert and key files from your local machine.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/tlsupload.png[link=images/tlsupload.png,window=_blank]
+^| Figure 8.1 - Upload custom certificates in the config editor
+^| [small]#Click on image to view large size#
+|===
+
+. Click `Validate Configuration Changes` and `Reconfigure quay`
+
+. In your OpenShift Console Wait for the example-registry Conditions to become Available--> True again

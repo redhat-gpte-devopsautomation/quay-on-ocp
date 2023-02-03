@@ -1,0 +1,34 @@
+== Increase the size of NooBaa’s S3 endpoint.
+
+The Quay Operator creates default object storage using the defaults provided by RHODF operator when creating a NooBaa object (50 Gib). 
+
+To increase the size of the PVs backing NooBaa’s S3 endpoint, you can resize an existing PVC or add more PVCs to a new storage pool. In this exercise, do the former.
+
+. In the OpenShift console, select *Storage → Persistent Volume Claims*.
+. Select the PersistentVolumeClaim named like db-noobaa-db-pg-0.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expandpvc1.png[link=images/expandpvc1.png,window=_blank]
+^| Figure 14.1 - Select the PVC for NooBaa
+^| [small]#Click on image to view large size#
+|===
+
+. From the Action menu, select Expand PVC.
+. Enter the new size of the Persistent Volume Claim and select Expand.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expandpvc2.png[link=images/expandpvc2.png,window=_blank]
+^| Figure 14.2 - Expand the PVC
+^| [small]#Click on image to view large size#
+|===
+
+. After a few minutes (depending on the size of the PVC), the expanded size should reflect in the PVC’s Capacity field.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/expandpvc3.png[link=images/expandpvc3.png,window=_blank]
+^| Figure 14.3 - View the changes take effect
+^| [small]#Click on image to view large size#
+|===

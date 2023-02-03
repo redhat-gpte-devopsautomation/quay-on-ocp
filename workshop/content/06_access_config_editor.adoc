@@ -1,0 +1,41 @@
+== Access the config editor
+
+. Before logging in to the config editor grab the username and password from the *Config Editor Credentials Secret*. Locate it as shown in the screenshot and click on it.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/configeditorsecret.png[link=images/configeditorsecret.png,window=_blank]
+^| Figure 6.1 - Config editor secret
+^| [small]#Click on image to view large size#
+|===
+
+
+. Copy the password after clicking on `Reveal values`. The username is `quayconfig`
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/configeditorpassword.png[link=images/configeditorpassword.png,window=_blank]
+^| Figure 6.2 - Config editor username and password
+^| [small]#Click on image to view large size#
+|===
+
+
+. Click the back button on your browser and open the link of the config editor endpoint in a new tab, login using the username `quayconfig` and the password which you copied
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/configeditorendpoint.png[link=images/configeditorendpoint.png,window=_blank]
+^| Figure 6.3 - Config editor URL
+^| [small]#Click on image to view large size#
+|===
+
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/configeditorloginpage.png[link=images/configeditorloginpage.png,window=_blank]
+^| Figure 6.4 - Config editor login page
+^| [small]#Click on image to view large size#
+|===
+
+
+

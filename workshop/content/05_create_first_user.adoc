@@ -1,0 +1,28 @@
+== Create first user and login to Red Hat Quay 
+
+. Once the *Registry Endpoint* has a value, navigate to this URL in your browser
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/quaylink.png[link=images/quaylink.png,window=_blank]
+^| Figure 5.1 - Registry endpoint link
+^| [small]#Click on image to view large size#
+|===
+
+. For Red Hat Quay, the first user has to be created manually. Click *Create Account* in the Quay registry UI to create an user
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/loginui.png[link=images/loginui.png,window=_blank]
+^| Figure 5.2 - Click on the Create Account button
+^| [small]#Click on image to view large size#
+|===
+. Enter details for username, password, email and click the *Create Account* button
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/createaccount.png[link=images/createaccount.png,window=_blank]
+^| Figure 5.3 - Create the first user
+^| [small]#Click on image to view large size#
+|===
+. You are automatically logged into the Quay registry

@@ -1,0 +1,127 @@
+== Reconfigure Quay via the config editor
+
+=== Disable user creation by non-superuser
+
+You might have noticed that anyone having access to the Registry endpoint would be able to create a new user and start using Red Hat Quay. You will disable this now.
+
+. Assuming that you are already logged into the config editor do the following steps
+
+. To disable user creation by any other user other than super admin by *unticking the checkbox* that says *Enable Non-Superuser User Creation*
+
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/disableusercreation.png[link=images/disableusercreation.png,window=_blank]
+^| Figure 7.1 - Disable Non-Superuser user creation
+^| [small]#Click on image to view large size#
+|===
+
+. Scroll down to the Super Users section and enter the username which you created earlier, which is `quayadmin` and click on the *Add* button
+
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/addsuperuser.png[link=images/addsuperuser.png,window=_blank]
+^| Figure 7.2 - The Red Hat Quay Operator
+^| [small]#Click on image to view large size#
+|===
+
+
+=== Change the server hostname
+
+The default hostname of the server is a bit long, shorten it.
+
+. Scroll up to the Server Configuration section and click on `Edit fields` to enable editing
+
+. Shorten the serverhostname by changing it 
++
+From 
++
+`example-registry-quay-quay-enterprise.apps.cluster-guid.guid.sandbox2348.opentlc.com`
++
+To
++
+`quay.apps.cluster-guid.guid.sandbox2348.opentlc.com`
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/changehostname.png[link=images/changehostname.png,window=_blank]
+^| Figure 7.3 - Change the hostname
+^| [small]#Click on image to view large size#
+|===
++
+NOTE: only replace the example-registry-quay-quay-enterprise to quay, keep the rest as it is
+
+. Click on *Validate Configuration Changes* button
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/validate.png[link=images/validate.png,window=_blank]
+^| Figure 7.4 - Validate configuration changes
+^| [small]#Click on image to view large size#
+|===
+
+
+. Click on the *Reconfigure Quay* button. This sends the new configuration to the Red Hat Quay Operator
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/reconfigurequay.png[link=images/reconfigurequay.png,window=_blank]
+^| Figure 7.5 - Reconfigure Quay
+^| [small]#Click on image to view large size#
+|===
+
+. Now if you head back to the registry page in the console, notice that the Registry endpoint has updated to quay.apps.cluster-guid.guid.sandboxxxx.com
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/updatedhostname.png[link=images/updatedhostname.png,window=_blank]
+^| Figure 7.6 - Updated hostname
+^| [small]#Click on image to view large size#
+|===
+
+
+. Open the registry endpoint link on a new tab and notice that the *Create account* button has vanished, hence we have disable user creation from the homepage.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/no-create-account.png[link=images/no-create-account.png,window=_blank]
+^| Figure 7.7 - Disabled Create Account button
+^| [small]#Click on image to view large size#
+|===
+
+
+. When you clicked the Reconfigure Quay button in the config editor, a new config was sent to the Red Hat Quay Operator and a updated deploy of application was rolled out by the Operator with this new config. That can be viewed by clicking on the *Config Bundle Secret* 
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/configbundlesecret.png[link=images/configbundlesecret.png,window=_blank]
+^| Figure 7.8 - The config bundle secret
+^| [small]#Click on image to view large size#
+|===
+
+. Scroll down and click on `reveal values`. Notice that the three settings that we changed
+.. FEATURE_USER_CREATION: false
+.. SERVER_HOSTNAME: quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com
+.. SUPER_USERS:
+quayadmin
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/updatedconfig.png[link=images/updatedconfig.png,window=_blank]
+^| Figure 7.9 - The updated config
+^| [small]#Click on image to view large size#
+|===
+
+
+. Navigate to Networking> Routes and see that the route has also been updated by the Operator
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/routes.png[link=images/routes.png,window=_blank]
+^| Figure 7.10 - The Operator updates the routes after changes
+^| [small]#Click on image to view large size#
+|===
+
+
+. We are using the config editor as a graphical interface to generate a config which is actually the config bundle secret. So if you change anything directly in the config bundle secret and save, an updated quay deployment will rollout
