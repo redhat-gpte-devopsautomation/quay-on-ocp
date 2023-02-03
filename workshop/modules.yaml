@@ -1,35 +1,43 @@
 ---
 modules:
   01_introduction:
-    name: Deploy Red Hat Quay on RHEL
-    exit_sign: Provision Lab Environment
-  02_order_lab:
-    name: Provision Lab Environment
-    exit_sign: Prerequisites
-  03_rhel_prerequisites:
-    name: Prerequisites
-    exit_sign: Configure Database
-  04_configure_database:
-    name: Configure Database
-    exit_sign: Configure Redis
-  05_configure_redis:
-    name: Configure Redis
-    exit_sign: Quay config mode
-  06_quay_config_mode:
-    name: Quay config mode
+    name: Introduction
+    exit_sign: Install ODF Operator
+  02_install_odf:
+    name: Install ODF Operator
+    exit_sign: Create NooBaa Instance
+  03_create_noobaa:
+    name: Create NooBaa Instance
     exit_sign: Deploy Quay
-  07_deploy_quay:
+  04_deploy_quay:
     name: Deploy Quay
-    exit_sign: Deploy Quay with SSL
-  08_deploy_quay_ssl:
-    name: Deploy Quay with SSL
-    exit_sign: Quay Superuser
-  09_superuser:
-    name: Quay Superuser
-    exit_sign: Repository mirroring
-  10_repo_mirroring:
-    name: Repository mirroring
-    exit_sign: Deploy Clair
-  11_deploy_clair:
-    name: Deploy Clair
-    
+    exit_sign: Create First User
+  05_create_first_user:
+    name: Create First User
+    exit_sign: Quay Config Editor
+  06_access_config_editor:
+    name: Quay Config Editor
+    exit_sign: Reconfigure Quay
+  07_reconfigure_quay:
+    name: Reconfigure Quay
+    exit_sign: Use Custom Certificate
+  08_custom_certs:
+    name: Use Custom Certificate
+    exit_sign: New UI Preview
+  09_new_ui_preview:
+    name: New UI Preview
+    exit_sign: Quota Management
+  10_quota_management:
+    name: Quota Management
+    exit_sign: Use Proxy Cache
+  11_proxy_cache:
+    name: Use Proxy Cache
+    exit_sign: Custom Clair Configuration
+  12_custom_clair_config:
+    name: Custom Clair Configuration
+    exit_sign: Increase Database Size
+  13_increase_db_size:
+    name: Increase Database Size
+    exit_sign: Increase NooBaa Size
+  14_increase_nooba_size:
+    name: Increase NooBaa Size
