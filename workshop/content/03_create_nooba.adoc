@@ -1,0 +1,74 @@
+== Create NooBaa object storage 
+
+. Connect to your OpenShift cluster via cli. You will get the OpenShift API for command line 'oc' client in the same email where you received the credentials
++
+[source,sh]
+----
+oc login -u opentlc-mgr -p <password> https://api.cluster-guid.guid.sandboxxxxx.opentlc.com:6443
+----
+
+. Save the following to a YAML file called nooba.yaml
++
+[source,sh]
+----
+apiVersion: noobaa.io/v1alpha1
+kind: NooBaa
+metadata:
+  name: noobaa
+  namespace: openshift-storage
+spec:
+ dbResources:
+   requests:
+     cpu: '0.1'
+     memory: 1Gi
+ dbType: postgres
+ coreResources:
+   requests:
+     cpu: '0.1'
+     memory: 1Gi
+----
+
+. Create the resource
++
+[source,sh]
+----
+oc create -n openshift-storage -f nooba.yaml
+----
+
+. After a couple of minutes, you should see that the MCG NooBaa instance has finished provisioning (PHASE column will be set to Ready):
++
+[source,sh]
+----
+$ oc get -n openshift-storage noobaas noobaa -w
+NAME     S3-ENDPOINTS                    STS-ENDPOINTS                   IMAGE                                                                                                            PHASE   AGE
+noobaa   ["https://10.0.253.92:30100"]   ["https://10.0.253.92:32102"]   registry.redhat.io/odf4/mcg-core-rhel8@sha256:bed794f5d396e04ff6e5041369f012f849402ac8a31a38c1acf054ff8c3b0874   Ready   2m38s
+----
+
+. Configure a backing store for the gateway. Save the following YAML to a file called noobaa-backing-store.yaml.
++
+[source,sh]
+----
+apiVersion: noobaa.io/v1alpha1
+kind: BackingStore
+metadata:
+  finalizers:
+  - noobaa.io/finalizer
+  labels:
+    app: noobaa
+  name: noobaa-pv-backing-store
+  namespace: openshift-storage
+spec:
+  pvPool:
+    numVolumes: 1
+    resources:
+      requests:
+        storage: 100Gi 
+  type: pv-pool
+----
+
+. Apply the configuration
++
+[source,sh]
+----
+oc create -f nooba-backing-store.yaml
+----

@@ -1,0 +1,30 @@
+
+== Install the ODF Operator
+
+Configuring object storage for the cluster is a prerequisite before installing Red Hat Quay.
+
+The Red Hat Openshift Data Foundation(RHODF) Operator allows to create a standalone instance of Multi-Cloud Object Gateway backed by a local Kubernetes PersistentVolume.
+
+. Visit the the Red Hat OpenShift console URL and login using the credentials you received in your email.
++
+https://console-openshift-console.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com/
+Username: opentlc-mgr
+
+. Install the RHODF operator
+
+.. Click on *Operators* > *OperatorHub* 
+.. Search with `odf` in the search box 
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/odfsearch.png[link=images/odfsearch.png,window=_blank]
+^| Figure 2.1 - The ODF Operator
+^| [small]#Click on image to view large size#
+|===
+
+.. Click on the *OpenShift Data Foundation* operator and then click on *Install* button
+.. Keep the default values and click on *Install* again
+.. The Operator installs in a namespace called `openshift-storage`
+.. When the installation of the Operator is complete, you are prompted to create a StorageSystem. Do not click on that button, instead, create NooBaa object storage as outlined in the following page.
+
+NOTE:  As part of a Red Hat Quay subscription, users are entitled to use the Multi-Cloud Object Gateway (MCG) component of the Red Hat OpenShift Data Foundation Operator (formerly known as OpenShift Container Storage Operator). 

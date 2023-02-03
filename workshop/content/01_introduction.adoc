@@ -1,12 +1,11 @@
-:markup-in-source: verbatim,attributes,quotes
 
-= Deploy Red Hat Quay on Openshift using Operators
+== Introduction
 
-NOTE: This project is based on OpenShift Homeroom: https://github.com/openshift-homeroom.
-This repository is based on https://github.com/openshift-homeroom/lab-asciidoc-sample.
-If you are using OpenShift Homeroom project already, please continue using it.
-If you want to integrate it with AgnosticD and Babylon, follow the instructions in 
-<<For the existing Homeroom users>>
+Red Hat Quay is an enterprise-quality registry for building, securing and serving container images. 
+It provides secure storage, distribution, and governance of containers and cloud-native artifacts on any infrastructure.
+
+Manual deployments of Red Hat Quay involves a lot of components and the overhead of managing those components. Red Hat Quay is best deployed on Red Hat OpenShift using the Operators which simplifies the deployment and manages all the components.
+
 
 == Overview
 
@@ -28,4 +27,3 @@ In this hands on lab you will:
 ** Disable the python updater
 * Increase the Postgres database size of Quay and Clair
 * Increase the size NooBaa’s S3 endpoint
-

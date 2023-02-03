@@ -1,0 +1,91 @@
+== Deploy Quay using the Red Hat Quay Operator
+
+. In the OpenShift console, Select *Operators → OperatorHub*, then select the *Red Hat Quay* Operator. If there is more than one, be sure to use the Red Hat certified Operator and not the community version.
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/quaysearch.png[link=images/quaysearch.png,window=_blank]
+^| Figure 4.1 - Search the Red Hat Quay Operator
+^| [small]#Click on image to view large size#
+|===
+. Select *Install*, keep the default settings and click *Install* again
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/quayoperatorinstall.png[link=images/quayoperatorinstall.png,window=_blank]
+^| Figure 4.2 - Install the Red Hat Quay Operator
+^| [small]#Click on image to view large size#
+|===
+. After a short time, you will see the Operator installed successfully. Click *View Operator*
+
+. You can now create the QuayRegistry instance from the cli or via the Openshift Console. Steps for creating via cli are shown below.
+
+=== Deploy the QuayRegistry instance
+
+. Create a new namespace
++
+[source,sh]
+----
+oc create ns quay-enterprise
+----
+
+. For a fully managed deployment, create the custom resource `QuayRegistry` in a file called quayregistry.yaml
++
+[source,sh]
+----
+apiVersion: quay.redhat.com/v1
+kind: QuayRegistry
+metadata:
+  name: example-registry
+  namespace: quay-enterprise
+----
+. Create the QuayRegistry in specified namespace
++
+[source,sh]
+----
+oc create -n quay-enterprise -f quayregistry.yaml
+----
+
+=== Verify successful deployment
+
+. Navigate to *Operators → Installed Operators*, then select the *Red Hat Quay* Operator to navigate inside the Operator detail view.
+
+. Select the `Quay Registry` tab and click on the `example-registry` resource to see its detailed view
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/quayregistry.png[link=images/quayregistry.png,window=_blank]
+^| Figure 4.3 - QuayRegistry Instance
+^| [small]#Click on image to view large size#
+|===
+. Scroll down to the Conditions section to see the status of the components meeting the condition requirements.
+. In the beginning components are not ready
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/componentnotready.png[link=images/componentnotready.png,window=_blank]
+^| Figure 4.1 - The Red Hat Quay Operator
+^| [small]#Click on image to view large size#
+|===
+
+. After few minutes the status changes to Available -> True with HealthChecksPassing
++
+[cols="1a",grid=none,width=80%]
+|===
+^| image::images/componentsready.png[link=images/componentsready.png,window=_blank]
+^| Figure 4.1 - The Red Hat Quay Operator
+^| [small]#Click on image to view large size#
+|===
+. You may also view the pods via the cli
++
+[source,sh]
+----
+oc get pods -n quay-enterprise
+----
+. Alternatively, you can wait until the status.registryEndpoint is populated.
++
+[source,sh]
+----
+oc get quayregistry -n quay-enterprise example-registry -o jsonpath="{.status.registryEndpoint}" -w
+----
+. You can open the registry endpoint link to land on the home page of the Red Hat Quay application.
