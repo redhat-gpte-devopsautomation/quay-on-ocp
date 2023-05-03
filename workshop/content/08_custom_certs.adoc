@@ -25,6 +25,10 @@ Before using your own certificate, you need to tell the operator that it will be
 required component `tls` marked as unmanaged, but `configBundleSecret` is missing necessary fields
 ----
 
+=== Create custom certificate 
+
+*Run the following commands on your laptop and not on the browser based terminal*
+
 . Create an openssl.cnf file with below contents, make sure to update the DNS.1 field with your Quay registry hostname
 +
 [source,sh]
@@ -44,9 +48,6 @@ DNS.1 = quay.apps.cluster-dv82w.dv82w.sandbox2348.opentlc.com
 NOTE: make sure to change the DNS.1 field appropriately as per your lab environment
 
 . Create a Certificate Authority
-+
-*Do the below on your laptop*
-
 
 .. Generate the root CA key:
 +
