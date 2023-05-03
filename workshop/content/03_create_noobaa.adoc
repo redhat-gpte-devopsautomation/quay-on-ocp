@@ -39,7 +39,7 @@ oc create -n openshift-storage -f nooba.yaml
 +
 [source,sh]
 ----
-$ oc get -n openshift-storage noobaas noobaa -w
+$ oc get -n openshift-storage noobaa noobaa
 NAME     S3-ENDPOINTS                    STS-ENDPOINTS                   IMAGE                                                                                                            PHASE   AGE
 noobaa   ["https://10.0.253.92:30100"]   ["https://10.0.253.92:32102"]   registry.redhat.io/odf4/mcg-core-rhel8@sha256:bed794f5d396e04ff6e5041369f012f849402ac8a31a38c1acf054ff8c3b0874   Ready   2m38s
 ----
@@ -70,5 +70,15 @@ spec:
 +
 [source,sh]
 ----
-oc create -f nooba-backing-store.yaml
+oc create -f noobaa-backing-store.yaml
+----
+
+. In a few minutes, the backing store moves to `Ready` state. You can keep running the following command to check the status
++
+[source,sh]
+----
+$ oc get -n openshift-storage BackingStore
+NAME                           TYPE      PHASE   AGE
+noobaa-default-backing-store   aws-s3    Ready   5m25s
+noobaa-pv-backing-store        pv-pool   Ready   103s
 ----

@@ -26,6 +26,7 @@ The Red Hat Openshift Data Foundation (RHODF) Operator allows to create a standa
 .. Click on the *OpenShift Data Foundation* operator and then click on the *Install* button
 .. Keep the default values and click on the next *Install* button
 .. The Operator installs in a namespace called `openshift-storage`
-.. When the installation of the Operator is complete, you are prompted to create a StorageSystem. Do not click on that button, instead, create NooBaa object storage as outlined in the following page
+.. Instead of clicking on `Create StorageSystem` click on `View installed Operators in Namespace openshift-storage` to view the newly installed operator.
+.. You skipped the StorageSystem creation because you will create NooBaa object storage as outlined in the next page.
 
 NOTE:  As part of a Red Hat Quay subscription, users are entitled to use the Multi-Cloud Object Gateway (MCG) component of the Red Hat OpenShift Data Foundation Operator (formerly known as OpenShift Container Storage Operator). 

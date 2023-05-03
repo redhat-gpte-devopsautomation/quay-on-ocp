@@ -47,3 +47,5 @@
 ^| Figure 9.5 - The new UI preview
 ^| [small]#Click on image to view large size#
 |===
+
+. Switch to the `Current UI` before you proceed with the following exercises.
