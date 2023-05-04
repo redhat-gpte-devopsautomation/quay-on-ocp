@@ -123,8 +123,23 @@ An optional company name []:
 $ openssl x509 -req -in ssl.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out ssl.cert -days 356 -extensions v3_req -extfile openssl.cnf
 ----
 
+. This will generate the required files you need
++
+[source,sh]
+----
+[nroy@nealwork quay]$ ls ssl.{cert,key}
+ssl.cert  ssl.key
+----
 
-. Upload the cert and key file in the Quay config editor. Click Edit Fields to make the fields editable and then click on `Choose File` button to upload the cert and key files from your local machine
+=== Upload your custom certificate and key using the Quay config editor
+
+. Open the Quay config editor and navigate to the `Server Configuration` section.
+
+. Click `Edit Fields` to make the fields editable 
+
+. Select `Red Hat Quay handles TLS` from the dropdown of *TLS*
+
+. Click on `Choose File` buttons to upload the cert and key files from your local machine. Please see the screenshot for reference
 +
 [cols="1a",grid=none,width=80%]
 |===
@@ -133,6 +148,10 @@ $ openssl x509 -req -in ssl.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial
 ^| [small]#Click on image to view large size#
 |===
 
-. Click `Validate Configuration Changes` and `Reconfigure quay`
+. Click the `Validate Configuration Changes` button
+
+. Click the `Reconfigure quay` button
 
 . In your OpenShift Console wait for the `example-registry` Conditions to become *Available -> True* again
+
+. Try opening your Quay registry endpoint again, you should see a `Not secure` warning on your browser confirming that your self signed certificate is being used.
